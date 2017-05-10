@@ -11,12 +11,12 @@
 				<form class="LoginContainner__form" name="loginForm" ng-submit="doLogin(loginForm)">
 					<div class="LoginContainner__form--inputContainner">
 						<label class="astrum__label" for="username">USUARIO</label>
-						<input class="astrum__input" value="officer_04" type="text" id="username" ng-model="login.username" placeholder="Ingresa tu nombre de Usuario" autocomplete="off" required>
+						<input class="astrum__input" type="text" id="username" ng-model="login.username" placeholder="Ingresa tu nombre de Usuario" autocomplete="off" required>
 						<!-- <div class="form-control-bottom"></div> -->
 					</div>
 					<div class="LoginContainner__form--inputContainner">
 						<label class="astrum__label" for="password">CONTRASEÑA</label>
-						<input class="astrum__input" value="gatogato" type="password" id="password" ng-model="login.password" placeholder="Ingresa tu Contraseña" autocomplete="off" required>
+						<input class="astrum__input" type="password" id="password" ng-model="login.password" placeholder="Ingresa tu Contraseña" autocomplete="off" required>
 						<!-- <div class="form-control-bottom"></div> -->
 					</div>
 					<div class="LoginContainner__form--btnSubmit">
@@ -29,6 +29,13 @@
 				<div class="LoginContainner__form--dateForget">
 					<p>¿Has olvidado tu usuario ó contraseña?</p>
 					<a href="#/forgetpassword">ENTRAR</a>
+				</div>
+			</div>
+			<div class="LoginContainner">
+				<div class="LoginContainner__form--dateForget" style="text-align: left;">
+					<p><strong>Test Mode</strong></p> <br>
+					<p><strong>user:</strong> officer_04</p> <br>
+					<p><strong>pass:</strong> gatogato</p>
 				</div>
 			</div>
 		</div>
