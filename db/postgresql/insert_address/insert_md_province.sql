@@ -1,0 +1,11 @@
+INSERT INTO md_province (province_id, province_name, region_id) VALUES (6,'Huaral',2);
+INSERT INTO md_province (province_id, province_name, region_id) VALUES (5,'Huaura',2);
+INSERT INTO md_province (province_id, province_name, region_id) VALUES (3,'Lima',2);
+INSERT INTO md_province (province_id, province_name, region_id) VALUES (9,'Oyon',2);
+INSERT INTO md_province (province_id, province_name, region_id) VALUES (8,'Canta',2);
+INSERT INTO md_province (province_id, province_name, region_id) VALUES (7,'Barranca',2);
+INSERT INTO md_province (province_id, province_name, region_id) VALUES (4,'Callao',2);
+INSERT INTO md_province (province_id, province_name, region_id) VALUES (3078,'Cajatambo',2);
+INSERT INTO md_province (province_id, province_name, region_id) VALUES (3050,'Huarochiri',2);
+INSERT INTO md_province (province_id, province_name, region_id) VALUES (3079,'Cañete',2);
+INSERT INTO md_province (province_id, province_name, region_id) VALUES (3080,'Yauyos',2);

@@ -1,0 +1,14 @@
+INSERT INTO md_streettype (streettype_id, streettype_name) VALUES (1,'ALAMEDA');
+INSERT INTO md_streettype (streettype_id, streettype_name) VALUES (2,'AUTOPISTA');
+INSERT INTO md_streettype (streettype_id, streettype_name) VALUES (3,'AVENIDA');
+INSERT INTO md_streettype (streettype_id, streettype_name) VALUES (4,'CALLE');
+INSERT INTO md_streettype (streettype_id, streettype_name) VALUES (5,'CARRETERA');
+INSERT INTO md_streettype (streettype_id, streettype_name) VALUES (6,'MALECON');
+INSERT INTO md_streettype (streettype_id, streettype_name) VALUES (7,'JIRON');
+INSERT INTO md_streettype (streettype_id, streettype_name) VALUES (8,'OVALO');
+INSERT INTO md_streettype (streettype_id, streettype_name) VALUES (9,'PLAZA');
+INSERT INTO md_streettype (streettype_id, streettype_name) VALUES (10,'PARQUE');
+INSERT INTO md_streettype (streettype_id, streettype_name) VALUES (11,'PASAJE');
+INSERT INTO md_streettype (streettype_id, streettype_name) VALUES (12,'VIA EXPRESA');
+INSERT INTO md_streettype (streettype_id, streettype_name) VALUES (13,'PROLONGACION');
+INSERT INTO md_streettype (streettype_id, streettype_name) VALUES (14,'CERRO');

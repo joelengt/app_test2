@@ -1,0 +1,332 @@
+> All options without filter
+URI: /dashboard/street-data-map/list/:value   
+METHOD: 'GET'
+
+// value de 0 a 5
+'md_country',   // 0
+'md_district',  // 1
+'md_province',  // 2
+'md_region',    // 3
+'md_street',    // 4
+'md_streettype' // 5
+
+-----------------------
+
+> All options filter
+URI: /dashboard/street-data-map/:option_select/list
+METHOD: 'GET'
+
+// Opciones de selecion
+var option_select = {
+	'pais',
+	'region',
+	'provincia',
+	'distrito',
+	'street',
+	'street-by-type'
+}
+
+Resultado 200  (* Los tipis de parametros del json cambian acorde a la consulta, hay 6 tipos)
+	{	
+		"status":"ok",
+		"result":[{
+			"id":1,
+			"country_id":1,
+			"country_name":"Perú"
+		}]
+	}
+
+Resultado Error
+
+	{
+		"status":"not_found",
+		"message":"El parametro id_before solicitado no es valida."
+	}
+
+-----------------------
+
+> All options filter
+URI: /dashboard/street-data-map/:option_select/:id_before
+METHOD: 'GET'
+
+// Opciones de selecion
+{
+	'pais',
+	'region',
+	'provincia',
+	'distrito',
+	'street',
+	'street-by-type'
+}
+
+// id_before: numero del 0 al 900000
+
+Resultado 200  (* Los tipis de parametros del json cambian acorde a la consulta, hay 6 tipos)
+	{	
+		"status":"ok",
+		"result":[{
+			"id":1,
+			"country_id":1,
+			"country_name":"Perú"
+		}]
+	}
+
+Resultado Error
+
+	{
+		"status":"not_found",
+		"message":"El parametro id_before solicitado no es valida."
+	}
+
+	
+
+-----------------------
+
+> Street filter
+URI: /dashboard/street-data-map/street/:id_before_number/street-by-type/:id_street_type
+METHOD: 'GET'
+
+// id_before_number: numero del 0 al 900000
+
+// id_street_type: numero del 1 al 14
+
+// id_before: numero del 0 al 900000
+
+Resultado 200  (* Los tipis de parametros del json cambian acorde a la consulta, hay 6 tipos)
+	{	
+		"status":"ok",
+		"result":[{
+			"id":1,
+			"country_id":1,
+			"country_name":"Perú"
+		}]
+	}
+
+Resultado Error
+
+	{
+		"status":"not_found",
+		"message":"El parametro id_before solicitado no es valida."
+	}
+
+-----------------------
+
+(* Los tipis de parametros del json cambian acorde a la consulta, hay 6 tipos)
+
+// PAIS
+"result":[
+{
+	"id":1,"country_id":1,	
+	"country_name":"Perú"
+}]
+
+// Distrito
+// {
+	"id":1,"district_id":51,
+	"district_name":"27 de Noviembre",
+	"province_id":6
+	},
+
+
+// PROVINCIA
+{
+	"id":1,
+	"province_id":6,
+	"province_name":"Huaral",
+	"region_id":2
+}
+
+
+// REGION
+{
+	"id":1,
+	"region_id":2,
+	"region_name":"Lima - Depto",
+	"country_id":1
+}
+
+// street
+{
+	"id":1,
+	"street_id":102505,
+	"streetname":"S/NOMBRE - A.H. CESAR VALLEJO AMPLIACION",
+	"streettype_id":11,
+	"district_id":19
+}
+
+// Street type
+{
+	"id":1,
+	"streettype_id":1,
+	"streettype_name":"ALAMEDA"
+}
+
+
+-----------------------
+
+*>>>>> Respetar la escala
+
+var distrito_string = ''
+
+var codigo_via_string = ''
+
+
+1.- Cuadro 'pais'
+ // Listar todas las opciones del pais
+
+URI: /dashboard/street-data-map/pais/list
+
+> Ejemplo /dashboard/street-data-map/pais/list
+
+* Mostrar Toda la lista, el usuario selecciona un elemento,
+	{"id":1,"country_id":1,"country_name":"Perú"}
+
+* Acumular 
+	distrito_string += data_json.country_name + ', '
+
+* Construir la uri del llamado de la siguiente caja, con el id del dato selecionado 'country_id' 
+
+-------------
+
+2.- Cuadro 'region'
+// Listar regiones, la lista se filtra segun el id '' del elemento de pais anterior seleccionado, ejemplo '1'
+
+URI: /dashboard/street-data-map/region/:country_id_select
+
+> Ejemplo /dashboard/street-data-map/region/1
+
+* Mostrar Toda la lista, el usuario selecciona un elemento,
+	{"id":1,"region_id":2,"region_name":"Lima - Depto","country_id":1}
+
+* Acumular 
+	distrito_string += data_json.region_name + ', '
+
+* Construir la uri del llamado de la sigueitne caja, con el id del dato seleccionado 'region_id'
+
+---------------
+
+3.- Cuadro 'provincia'
+// Listar provincias, la lista se filtra segun el elemento de region anterior sesleccionado, ejemplo '2'
+
+URI: /dashboard/street-data-map/provincia/:region_id_select
+
+> Ejemplo /dashboard/street-data-map/provincia/2
+
+* Mostrar Toda la lista, el usuario selecciona un elemento,
+	{"id":1,"province_id":6,"province_name":"Huaral","region_id":2}
+
+* Acumular 
+	distrito_string += data_json.province_name + ', '
+
+* Construir la uri del llamado de la siguiente caja, con el id del dato seleccionado 'province_id'
+
+-----------------
+
+4.- Cuadro 'distrito'
+// Listar distritos, la lista se filtra segun el elemento de provincia anterior seleccionado, ejemplo '32'
+
+URI: /dashboard/street-data-map/distrito/:provincia_id_select
+
+> Ejemplo  /dashboard/street-data-map/distrito/6
+
+* Mostrar Toda la lista, el usuario selecciona un elemento,
+	{"id":1,"district_id":51,"district_name":"27 de Noviembre","province_id":6}
+
+* Acumular 
+	distrito_string += data_json.district_name
+
+* Construir la uri del llamado de la siguiente caja, con el id del dato seleccionado 'district_id'
+
+------------------
+
+5.- Cuadro 'street type'
+// Listar tipo de calle, la lista se filtra segun el elemento de provincia anterior seleccionado, ejemplo '23'
+
+URI: /dashboard/street-data-map/street-by-type/list
+
+> Ejemplo /dashboard/street-data-map/street-by-type/list
+
+* Mostrar Toda la lista, el usuari selecciona un elemento,
+	{"id":4,"streettype_id":4,"streettype_name":"CALLE"}
+
+* Acumular
+	codigo_via_string += streettype_name + ' '
+
+* Construir la uri del llamado de la siguiente caja, con el id del dato seleccionado 'streettype_id'
+
+------------------
+
+5.- Cuadro 'codigo de via o calle'
+// Listar calles, la lista se filtra segun el elemento de provincia anterior seleccionado, ejemplo '18'
+
+URI: /dashboard/street-data-map/street/:distrito_id_select/street-by-type/:id_streettype_id
+
+> Ejemplo /dashboard/street-data-map/street/51/street-by-type/4
+
+* Mostrar Toda la lista, el usuario selecciina un elemento,
+	{"id":50954,"street_id":93121,"streetname":"AYACUCHO","streettype_id":4,"district_id":51}
+
+* Acumular
+	codigo_via_string += streetname
+
+*>>>> Acumular las variables con las data name anterior obtenidas
+
+		var new_distrito_string =  distrito_string.split(',')[3] + ', ' +  distrito_string.split(',')[2] + ', ' +  distrito_string.split(',')[1] + ', ' +  distrito_string.split(',')[0] 
+
+		//'27 de Noviembre, Huaral, Lima - Depto, Perú'
+
+
+		var new_codigo_via_string =  'CALLE AYACUCHO'
+
+
+6.- Guardar en el formulario del cliente los parametros de string 'new_distrito_string' en distrito, y 'new_codigo_via_string' en codigo de via
+
+
+7.- Hacer lectura del uri para selecciona un elemento en urbanizacion
+	* uri Listar elemento
+	URI: /dashboard/street-data-map/urganizacion
+	METHOD: GET
+
+	resultado 200
+	{	
+		"status":"ok",
+		"result":[
+			{
+				"_id":"5810032b8afac22616495f43",
+				"name":"URB. Manzanos",
+				"Date":"2016-10-26T01:13:15.317Z"
+			},
+			{
+				"_id":"5810032b8afac22616495123",
+				"name":"URB. Peranos",
+				"Date":"2016-10-27T01:13:15.317Z"
+			}
+
+			]
+		}
+	}
+
+	* uri guardar elemento nuevo
+	URI: /dashboard/street-data-map/urganizacion/add
+	METHOD: POST
+
+	'new_string_urbanizacion' --> enviar string por body, //ejemplo 'Los Manzanos grandes'
+
+	resultado 200
+	{
+		"status":"ok",
+		"result":{
+				"name":"URB. Manzanos",
+				"_id":"5810032b8afac22616495f43",
+				"Date":"2016-10-26T01:13:15.317Z"
+			}
+		}
+	}
+
+	+> En el tipeo predictivo si es nuevo, debe siempre ponerle el 'URB.' al inicio de la palabra, cuando se guarde el servidor entregara la nueva data con este campo ya en lista
+
+
+
+
+
+
