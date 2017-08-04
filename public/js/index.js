@@ -8,7 +8,7 @@ var myApp = angular.module('Astrum', ['ngRoute', 'ngCookies'])
 var URL_MAIN = `${window.location.protocol}//${window.location.host}:5002`
 
 myApp.constant('url', {
-	url: MAIN_URL,
+	url: URL_MAIN,
 	order_work: '#/dashboard/order/',
 	dashboard: '#/dashboard/',
 	usuarios: '#/users/',
