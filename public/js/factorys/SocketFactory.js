@@ -1,9 +1,11 @@
+let URL_MAIN = `${window.location.protocol}//${window.location.host}:5002`
+
 myApp.factory('Socket', ['socketFactory', function(socketFactory){
 	// return socketFactory()
 	return socketFactory(
 		{
 			prefix: 'notifications',
-			ioSocket: io.connect('/notificaciones-io')
+			ioSocket: io.connect(`${URL_MAIN}/notificaciones-io`)
 		},
 		// {
 		// 	prefix: 'chat',
@@ -11,7 +13,7 @@ myApp.factory('Socket', ['socketFactory', function(socketFactory){
 		// },
 		{
 			prefix: 'Track_one_user',
-			ioSocket: io.connect('/tracking-io')
+			ioSocket: io.connect(`${${URL_MAIN}}/tracking-io`)
 		}
 	)
 }])

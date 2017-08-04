@@ -1,6 +1,6 @@
-let URL_MAIN = `${window.location.protocol}//${window.location.host}/app`
+let URL_MAIN = `${window.location.protocol}//${window.location.host}:5002`
 
-var socket = io('http://localhost')
+var socket = io(`${URL_MAIN}`)
 
 var $btn_see_detalles = document.querySelector('#btn_see_detalles')
 
