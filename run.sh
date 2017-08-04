@@ -1,5 +1,5 @@
 #!/bin/sh
-PORT=5000 node index.js
+PORT=5002 node index.js
 
 
 

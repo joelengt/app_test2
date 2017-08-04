@@ -1,5 +1,5 @@
 
-let URL_MAIN = `${window.location.protocol}//${window.location.host}:5002`
+let URL_MAIN = `${window.location.protocol}//${window.location.hostname}:5002`
 
 console.log('CARGO EL ELEMTO111111!!!!')
 var socketConnect = io(`${URL_MAIN}/connect-io`)

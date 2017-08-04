@@ -1,4 +1,4 @@
-let URL_MAIN = `${window.location.protocol}//${window.location.host}:5002`
+let URL_MAIN = `${window.location.protocol}//${window.location.hostname}:5002`
 
 var $btn_empresa_open = document.querySelector('#btn_empresa_open')
 var $btn_empresa_add = document.querySelector('#btn_empresa_add')
