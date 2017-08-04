@@ -1,4 +1,4 @@
-let URL_MAIN = `${window.location.protocol}//${window.location.host}:5002`
+// let URL_MAIN = `${window.location.protocol}//${window.location.host}:5002`
 
 myApp.controller('orderWorkController', ['$scope', '$http', '$routeParams', '$location', 'url', 'Loader', function($scope, $http, $routeParams, $location, url, Loader){
 	Loader.create('.OrderWork__left', 'listItemsDash')

@@ -1,4 +1,4 @@
-let URL_MAIN = `${window.location.protocol}//${window.location.host}:5002`
+// let URL_MAIN = `${window.location.protocol}//${window.location.host}:5002`
 
 myApp.controller('forgetPassword', ['$scope', '$http', 'Loader', function($scope, $http, Loader){
 	angular.extend($scope, {

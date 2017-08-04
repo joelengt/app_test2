@@ -1,4 +1,4 @@
-let URL_MAIN = `${window.location.protocol}//${window.location.host}:5002`
+// let URL_MAIN = `${window.location.protocol}//${window.location.host}:5002`
 
 myApp.controller('notificationController', ['$scope', 'userModel', '$http', 'Loader', '$location', function($scope, userModel, $http, Loader, $location){
 	$scope.itemsNotifications = []

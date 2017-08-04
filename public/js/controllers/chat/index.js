@@ -1,5 +1,5 @@
 
-let URL_MAIN = `${window.location.protocol}//${window.location.host}:5002`
+// let URL_MAIN = `${window.location.protocol}//${window.location.host}:5002`
 
 myApp.controller('chatController', ['$scope', '$http', 'Loader', function($scope, $http, Loader){
 	// LISTA DE ROOM FRIENDS PARA CHAT
