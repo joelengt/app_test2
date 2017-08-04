@@ -1,3 +1,6 @@
+
+let URL_MAIN = `${window.location.protocol}//${window.location.host}:5002`
+
 myApp.controller('chatController', ['$scope', '$http', 'Loader', function($scope, $http, Loader){
 	// LISTA DE ROOM FRIENDS PARA CHAT
 	function ListRooms(){
@@ -14,7 +17,7 @@ myApp.controller('chatController', ['$scope', '$http', 'Loader', function($scope
 		Loader.create('.MessagesFriends__containner--items', 'ItemsRooms')
 		$http({
 			method:'GET',
-			url: `${$scope.url.url}/dashboard/chat/list`
+			url: `${URL_MAIN}/dashboard/chat/list`
 		}).then(function(res){
 			Loader.delete('.MessagesFriends__containner--items', 'ItemsRooms')
 			console.log(res)
@@ -54,7 +57,7 @@ myApp.controller('chatController', ['$scope', '$http', 'Loader', function($scope
 		Loader.create('.MessagesFriends__containner', 'LoaderUserRoom')
 		$http({
 			method: 'POST',
-			url: `${$scope.url.url}/dashboard/chat/room/${idRoom}/${idFriend}`
+			url: `${URL_MAIN}/dashboard/chat/room/${idRoom}/${idFriend}`
 		}).then(function(res){
 			var infoFriend = res.data.friend
 			var chat = res.data.chatContent.messages

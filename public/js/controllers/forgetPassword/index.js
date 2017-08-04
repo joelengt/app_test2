@@ -1,3 +1,5 @@
+let URL_MAIN = `${window.location.protocol}//${window.location.host}:5002`
+
 myApp.controller('forgetPassword', ['$scope', '$http', 'Loader', function($scope, $http, Loader){
 	angular.extend($scope, {
 		doLogin: function(loginForm){
@@ -12,7 +14,7 @@ myApp.controller('forgetPassword', ['$scope', '$http', 'Loader', function($scope
 			Loader.create('.ErrorLogin', 'Login')
 			$http({
 				method:'POST',
-				url: `${$scope.url.url}/get-my-access/send_email/send`,
+				url: `${URL_MAIN}/get-my-access/send_email/send`,
 				data: data
 			}).then(function(res){
 				console.log(res)

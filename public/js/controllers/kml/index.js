@@ -1,3 +1,5 @@
+let URL_MAIN = `${window.location.protocol}//${window.location.host}:5002`
+
 myApp.controller('kmlController', ['$scope', '$http', 'multipartForm', 'Loader', 'url', function($scope, $http, multipartForm, Loader, url){
 
 	var map 
@@ -11,7 +13,7 @@ myApp.controller('kmlController', ['$scope', '$http', 'multipartForm', 'Loader',
 	function AddMarkers(){
 		$http({
 			method: 'POST',
-			url: `${$scope.url.url}/dashboard/ordenes_trabajo/dynamic-filter/true/all/all`
+			url: `${URL_MAIN}/dashboard/ordenes_trabajo/dynamic-filter/true/all/all`
 		}).then(function(res){
 			console.log(res)
 			if (res.data.work_orders) {
@@ -1301,7 +1303,7 @@ myApp.controller('kmlController', ['$scope', '$http', 'multipartForm', 'Loader',
 			Loader.create('.FormMsgFirst__label--text', 'LoadItem')
 			
 			$.ajax({
-			  url :  `${$scope.url.url}/dashboard/viewer-kml/new-file-kml`,
+			  url :  `${URL_MAIN}/dashboard/viewer-kml/new-file-kml`,
 			  type : 'POST',
 			  data : fd,
 			  // async: true,
@@ -1338,7 +1340,7 @@ myApp.controller('kmlController', ['$scope', '$http', 'multipartForm', 'Loader',
 	  // Obteniendo archivos KML subidos en google drive
 	  $http({
 	  	method: 'GET',
-	  	url: `${$scope.url.url}/dashboard/viewer-kml/list`
+	  	url: `${URL_MAIN}/dashboard/viewer-kml/list`
 	  }).then(function(res){
 	  	// console.log(res)
 			Loader.delete('.Kml__right--map', 'ViewKmlMap')
@@ -1498,7 +1500,7 @@ myApp.controller('kmlController', ['$scope', '$http', 'multipartForm', 'Loader',
 		console.log('Subiendo....')
 		Loader.create('.Kml__left--items', 'upladFileKml')		
 		$.ajax({
-		  url : `${$scope.url.url}/dashboard/viewer-kml/new-file-kml`,
+		  url : `${URL_MAIN}/dashboard/viewer-kml/new-file-kml`,
 		  type : 'POST',
 		  data : fd,
 		  // async: true,
@@ -1549,7 +1551,7 @@ myApp.controller('kmlController', ['$scope', '$http', 'multipartForm', 'Loader',
 			fd.append('file2', file_to_upload)
 
 			$.ajax({
-				url: `${$scope.url.url}/dashboard/viewer-kml/updated-file-kml/${id}?_method=put`,
+				url: `${URL_MAIN}/dashboard/viewer-kml/updated-file-kml/${id}?_method=put`,
 				type: 'POST',
 				data : fd,
 				async: false,
@@ -1585,7 +1587,7 @@ myApp.controller('kmlController', ['$scope', '$http', 'multipartForm', 'Loader',
 		  	Loader.create('.Kml__left--items', 'DeleteKml')
 
 			$.ajax({
-				url : `${$scope.url.url}/dashboard/viewer-kml/remove-file-kml/${id}?_method=delete`,
+				url : `${URL_MAIN}/dashboard/viewer-kml/remove-file-kml/${id}?_method=delete`,
 				type : 'POST',
 				async: false,
 				cache: false,

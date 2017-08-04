@@ -13,7 +13,7 @@ myApp.factory('Socket', ['socketFactory', function(socketFactory){
 		// },
 		{
 			prefix: 'Track_one_user',
-			ioSocket: io.connect(`${${URL_MAIN}}/tracking-io`)
+			ioSocket: io.connect(`${URL_MAIN}/tracking-io`)
 		}
 	)
 }])
