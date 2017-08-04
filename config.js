@@ -73,13 +73,12 @@ var config = {
     },
     path_system: {
         ubuntu: '/home/baudelaire/Desktop/astrumApp',
-        server: '/root/astrum',
+        server: '/var/www/apps/astrum',
         mac:    '/Users/joelengt/Desktop/Proyectos Web/coder/astrum'
     },
     hostlocal_url: {
-        //url: 'http://192.168.0.15:5000',
-        url: 'http://192.168.0.16:5000',
-        server: 'https://wos.astrumla.com'
+        url: 'http://45.55.159.35:5002',
+        server: 'https://joelgt.com'
     }
 }
 

@@ -1,7 +1,8 @@
+let URL_MAIN = `${window.location.protocol}//${window.location.host}/app`
 
 console.log('Datos lectura')
 
-var socket = io('http://localhost')
+var socket = io(`${URL_MAIN}`)
 
 // Datos para enviar por publicación
 var $user_id = document.querySelector('#user_id').value

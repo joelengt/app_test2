@@ -8,12 +8,13 @@ console.log('HOlaaaa**')
 var map 
 var markers = []
 
+let URL_MAIN = `${window.location.protocol}//${window.location.host}/app`
 
 // CARGA DE MARKER DE ORDENES DE TRABAJO
 addEventListener('load', function () {
   $.ajax({
     method: 'get',
-    url: '/dashboard/ordenes_trabajo/works_ordeners/list',
+    url: `${URL_MAIN}/dashboard/ordenes_trabajo/works_ordeners/list`,
     success: function (result) {
 
       var infowindow = null;
@@ -236,7 +237,7 @@ $('#FormMsg').submit(function () {
     console.log('Subiendo....')
   
     $.ajax({
-       url : 'http://localhost:5000/dashboard/viewer-kml/new-file-kml',
+       url : `${URL_MAIN}/dashboard/viewer-kml/new-file-kml`,
        type : 'POST',
        data : fd,
        async: false,
@@ -288,7 +289,7 @@ $ArticlesContainer.on('click', 'button.kml_update', function (ev) {
   console.log('Subiendo Actualziación 11111111111 .......')
 
     $.ajax({
-        url: `http://localhost:5000/dashboard/viewer-kml/updated-file-kml/${id}?_method=put`,
+        url: `${URL_MAIN}/dashboard/viewer-kml/updated-file-kml/${id}?_method=put`,
         type: 'POST',
         data : fd,
         async: false,
@@ -327,7 +328,7 @@ $ArticlesContainer.on('click', 'button.kml_delete', function (ev) {
   console.log('Eliminando...')
 
  $.ajax({
-     url : `http://localhost:5000/dashboard/viewer-kml/remove-file-kml/${id}?_method=delete`,
+     url : `${URL_MAIN}/dashboard/viewer-kml/remove-file-kml/${id}?_method=delete`,
      type : 'POST',
      async: false,
      cache: false,

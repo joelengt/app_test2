@@ -1,3 +1,4 @@
+let URL_MAIN = `${window.location.protocol}//${window.location.host}/app`
 console.log('AAA')
 
 var $btn_buscar_poste = document.querySelector('#btn_buscar_poste')
@@ -26,7 +27,7 @@ $btn_buscar_poste.addEventListener('click', function () {
 
 	$.ajax({
 		type: 'post',
-		url: `http://localhost:5000/plataforma/work-order/${type_service}`,
+		url: `${URL_MAIN}/plataforma/work-order/${type_service}`,
 		data: {
 			code_service: code_service
 		},

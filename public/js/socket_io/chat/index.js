@@ -1,5 +1,6 @@
+let URL_MAIN = `${window.location.protocol}//${window.location.host}/app`
 
-var socket = io('/chat-io')
+var socket = io(`${URL_MAIN}/chat-io`)
 var file_data 
 
 $('#published_publish_multimedia_to_chat').change(function(e) {

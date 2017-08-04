@@ -1,8 +1,10 @@
+let URL_MAIN = `${window.location.protocol}//${window.location.host}/app`
+
 myApp.factory('Auth', ['$http', '$q', 'AuthToken', function($http, $q, AuthToken){
 	var authFactory = {}
 
 	authFactory.login = function(username, password){
-		return $http.post('/auth/dashboard', {
+		return $http.post(`${URL_MAIN}/auth/dashboard`, {
 			username: username,
 			password: password
 		})

@@ -4,7 +4,7 @@ myApp.controller('userControllers', ['$scope', '$http', 'url', 'Loader', functio
 
 	$http({
 		method:'GET',
-		url:'/dashboard/usuarios/dynamic-filter/users-campo/todos'
+		url: `${$scope.url.url}/dashboard/usuarios/dynamic-filter/users-campo/todos`
 	}).then(function(res){
 		console.log(res)
 		Loader.delete('.users__list', 'ListUsers')	
@@ -48,7 +48,7 @@ myApp.controller('userControllers', ['$scope', '$http', 'url', 'Loader', functio
 				// console.log(type_user.val(), status.val())
 				$http({
 					method: 'GET',
-					url: '/dashboard/usuarios/dynamic-filter/'+type_user.val()+'/'+status.val()
+					url: `${$scope.url.url}/dashboard/usuarios/dynamic-filter/${type_user.val()}/${status.val()}`
 				}).then(function(res){
 					Loader.delete('.users__list', 'ListUsers')
 					// console.log(res)
@@ -103,7 +103,7 @@ myApp.controller('userControllers', ['$scope', '$http', 'url', 'Loader', functio
 
 				$http({
 					method: 'POST',
-					url: '/dashboard/usuarios/delete/'+id+'?_method=delete'
+					url: `${$scope.url.url}/dashboard/usuarios/delete/${id}?_method=delete`
 				}).then(function(res){
 					console.log(res)
 					$('[data-containneruser="'+id+'"]').remove()
@@ -240,7 +240,7 @@ myApp.controller('userControllers', ['$scope', '$http', 'url', 'Loader', functio
 						$.ajax({
 							method: 'POST',
 							data: data,
-							url: '/dashboard/usuarios/viewer/register',
+							url: `${$scope.url.url}/dashboard/usuarios/viewer/register`,
 							success: function(res){
 								console.log(res)
 							},
@@ -361,7 +361,7 @@ myApp.controller('userControllers', ['$scope', '$http', 'url', 'Loader', functio
 
 						$.ajax({
 							method: 'POST',
-							url: '/dashboard/usuarios/officers/register',
+							url: `${$scope.url.url}/dashboard/usuarios/officers/register`,
 							data: data,
 							success: function(res){
 								console.log(res)
@@ -481,7 +481,7 @@ myApp.controller('userControllers', ['$scope', '$http', 'url', 'Loader', functio
 
 				$http({
 					method:'GET',
-					url: '/dashboard/usuarios/users-campo/new'
+					url: `${$scope.url.url}/dashboard/usuarios/users-campo/new`
 				}).then(function(res){
 					console.log(res)
 					// $scope.users.push(res.data.user)
@@ -531,7 +531,7 @@ myApp.controller('userControllers', ['$scope', '$http', 'url', 'Loader', functio
 
 						$.ajax({
 							method: 'POST',
-							url: '/dashboard/usuarios/users-campo/register',
+							url: `${$scope.url.url}/dashboard/usuarios/users-campo/register`,
 							data: data,
 							success: function(res){
 								console.log(res)
@@ -574,7 +574,7 @@ myApp.controller('userControllers', ['$scope', '$http', 'url', 'Loader', functio
 				var search = $('#newInfoContratista')
 				$http({
 					method: 'POST',
-					url: '/dashboard/usuarios/contratista-name/add',
+					url: `${$scope.url.url}/dashboard/usuarios/contratista-name/add`,
 					data: {contratista:search.val()}
 				}).then(function(res){
 					console.log(res)
@@ -613,7 +613,7 @@ myApp.controller('userControllers', ['$scope', '$http', 'url', 'Loader', functio
 				Loader.create('.infoUser', 'dataUser')
 				$http({
 					method: 'GET',
-					url:'/dashboard/usuarios/' + idUser
+					url: `${$scope.url.url}/dashboard/usuarios/${idUser}`
 				}).then(function(res){
 					console.log(res)
 					Loader.delete('.infoUser', 'dataUser')
@@ -694,7 +694,7 @@ myApp.controller('userControllers', ['$scope', '$http', 'url', 'Loader', functio
 				Loader.create('.editInfoUser', 'editDataUser')
 				$http({
 					method: 'GET',
-					url: '/dashboard/usuarios/' + id
+					url: `${$scope.url.url}/dashboard/usuarios/${id}`
 				}).then(function(res){
 					console.log(res)
 					Loader.delete('.editInfoUser', 'editDataUser')
@@ -784,7 +784,7 @@ myApp.controller('userControllers', ['$scope', '$http', 'url', 'Loader', functio
 
 					$http({
 						method:'GET',
-						url: '/dashboard/usuarios/users-campo/new'
+						url: `${$scope.url.url}/dashboard/usuarios/users-campo/new`
 					}).then(function(res){
 						console.log(res)
 						// $scope.users.push(res.data.user)
@@ -829,7 +829,7 @@ myApp.controller('userControllers', ['$scope', '$http', 'url', 'Loader', functio
 
 						$http({
 							method: 'POST',
-							url: '/dashboard/usuarios/edit/'+id+'?_method=put',
+							url: `${$scope.url.url}/dashboard/usuarios/edit/${id}?_method=put`,
 							data: data
 						}).then(function(res){
 							console.log(res)
@@ -886,7 +886,7 @@ myApp.controller('userControllers', ['$scope', '$http', 'url', 'Loader', functio
 
 								$http({
 									method: 'POST',
-									url: '/dashboard/usuarios/edit/'+id+'?_method=put',
+									url: `${$scope.url.url}/dashboard/usuarios/edit/${id}?_method=put`,
 									data: data
 								}).then(function(res){
 									console.log(res)
@@ -952,7 +952,7 @@ myApp.controller('userControllers', ['$scope', '$http', 'url', 'Loader', functio
 
 				$http({
 					method: 'GET',
-					url:'/dashboard/usuarios/tracking/' + idConnect + '/draw'
+					url: `${$scope.url.url}/dashboard/usuarios/tracking/${idConnect}/draw`
 				}).then(function(res){
 					Loader.delete('.users__right--mapCanvas', 'TrackingUserData')
 					console.log(res)
@@ -1034,7 +1034,7 @@ myApp.controller('userControllers', ['$scope', '$http', 'url', 'Loader', functio
 						Loader.create('.infoTracking__containner', 'tracking-loader-more')
 						$http({
 							method: 'GET',
-							url: '/dashboard/usuarios/tracking/' + idConnect + '/draw/more'
+							url: `${$scope.url.url}/dashboard/usuarios/tracking/${idConnect}/draw/more`
 						}).then(function(res){
 							console.log(res)
 							Loader.delete('.infoTracking__containner', 'tracking-loader-more')

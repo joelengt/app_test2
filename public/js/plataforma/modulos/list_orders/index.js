@@ -1,4 +1,5 @@
-  
+let URL_MAIN = `${window.location.protocol}//${window.location.host}/app`
+
 var $btn_see_detalles = document.querySelector('#btn_see_detalles')
 
 console.log('HOlaaaa')
@@ -6,7 +7,7 @@ console.log('HOlaaaa')
 addEventListener('load', function () {
   $.ajax({
     method: 'get',
-    url: 'http://localhost:5000/plataforma/work-order/list',
+    url: '${URL_MAIN}/plataforma/work-order/list',
     success: function (result) {
 
       var work_orders = result.work_orders
@@ -121,7 +122,7 @@ $ArticlesContainer.on('click', 'button.btn_article_detalles', function (ev) {
 
     $.ajax({
         type: 'GET',
-        url: `http://localhost:5000/plataforma/work-order/${id}`,
+        url: `${URL_MAIN}/plataforma/work-order/${id}`,
         success: function (result) {
             // Mostrando mapa de ubicación
             console.log(result.work_order)
@@ -213,7 +214,7 @@ $ArticlesContainer.on('click', 'button.btn_article_detalles', function (ev) {
                                                       <p>${work_order_element._id}</p>
                                                       <img src="${work_order_element.image_element.path}" width="50">
                                                       <p>${work_order_element.type}</p>
-                                                      <form action="http://localhost:5000/plataforma/work-order/${item._id}/read/${work_order_element.type}/${work_order_element._id}" method="post">
+                                                      <form action="${URL_MAIN}/plataforma/work-order/${item._id}/read/${work_order_element.type}/${work_order_element._id}" method="post">
                                                         <button>Ver detalles</button>
                                                       </form>
                                                   </div>`
@@ -279,7 +280,7 @@ $ArticlesContainer.on('click','button.btn_article_street-view', function (ev) {
   console.log(id)
   $.ajax({
      type: 'GET',
-     url: `http://localhost:5000/plataforma/work-order/${id}`,
+     url: `${URL_MAIN}/plataforma/work-order/${id}`,
      success: function (result) {
          // Mostrando mapa de ubicación
          console.log(result.work_order)
@@ -310,7 +311,7 @@ $ArticlesContainer.on('click','button.btn_article_service_details', function (ev
     // Consultando la orden de trabajopor id de item
     $.ajax({
         type: 'GET',
-        url:`http://localhost:5000/plataforma/work-order/${id}`,
+        url:`${URL_MAIN}/plataforma/work-order/${id}`,
         success: function (result) {
           console.log(result.work_order)
           var item = result.work_order
@@ -336,7 +337,7 @@ $ArticlesContainer.on('click','button.btn_article_service_details', function (ev
           // Buscando detalles del servicio por esta orden de trabajo
           $.ajax({
             type: 'POST',
-            url: `http://localhost:5000/plataforma/work-order/buscar/${type_service}`,
+            url: `${URL_MAIN}/plataforma/work-order/buscar/${type_service}`,
             data: {
               code_work_order: item.codigo_orden
             },

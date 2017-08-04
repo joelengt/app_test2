@@ -5,9 +5,10 @@
 * Description
 */
 var myApp = angular.module('Astrum', ['ngRoute', 'ngCookies'])
+var MAIN_URL = `${window.location.protocol}//${window.location.host}/app`
 
 myApp.constant('url', {
-	url: 'http://localhost:5000',
+	url: MAIN_URL,
 	order_work: '#/dashboard/order/',
 	dashboard: '#/dashboard/',
 	usuarios: '#/users/',

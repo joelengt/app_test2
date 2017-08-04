@@ -1,5 +1,7 @@
+
+let URL_MAIN = `${window.location.protocol}//${window.location.host}/app`
 console.log('CARGO EL ELEMTO111111!!!!')
-var socketConnect = io('/connect-io')
+var socketConnect = io(`${URL_MAIN}/connect-io`)
 
 var user_id_connect = document.querySelector('#user_id_here')
 var dataList = document.querySelectorAll('.UserItem')   // Corregir esta parte

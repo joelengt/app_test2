@@ -1,7 +1,8 @@
+let URL_MAIN = `${window.location.protocol}//${window.location.host}/app`
 
 console.log('HA2')
 
-var socket = io('/chat-io')
+var socket = io(`${URL_MAIN}/chat-io`)
 
 /*
 var count = 0

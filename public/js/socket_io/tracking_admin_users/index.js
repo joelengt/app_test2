@@ -1,3 +1,4 @@
+let URL_MAIN = `${window.location.protocol}//${window.location.host}/app`
 
 console.log('Js admin')
 
@@ -11,7 +12,7 @@ console.log('HOlaaaajjjjjj')
 addEventListener('load', function () {
   $.ajax({
     method: 'get',
-    url: 'http://localhost:5000/dashboard/ordenes_trabajo/works_ordeners/list', // Cambiar URI por busqueda de filtro
+    url: `${URL_MAIN}/dashboard/ordenes_trabajo/works_ordeners/list`, // Cambiar URI por busqueda de filtro
     // url: 'http://localhost:5000/dashboard/ordenes_trabajo/dynamic-filter/true/all/all',
     success: function (result) {
 
@@ -95,7 +96,7 @@ addEventListener('load', function () {
 
       $.ajax({
         method: 'get',
-        url: 'http://localhost:5000/dashboard/usuarios/tracking/' + user_id + '/draw',
+        url: `${URL_MAIN}/dashboard/usuarios/tracking/${user_id}/draw`,
         success: function (result) {
             
             // construyendo path

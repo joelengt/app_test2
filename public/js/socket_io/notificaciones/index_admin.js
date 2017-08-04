@@ -1,7 +1,8 @@
+let URL_MAIN = `${window.location.protocol}//${window.location.host}/app`
 
 console.log('NotificacionS')
 
-var socket = io('/notificaciones-io')
+var socket = io(`${URL_MAIN}/notificaciones-io`)
 
 socket.on('notis_one_user', function (content) {
 

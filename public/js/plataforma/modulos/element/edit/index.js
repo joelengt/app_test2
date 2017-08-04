@@ -1,4 +1,5 @@
 
+let URL_MAIN = `${window.location.protocol}//${window.location.host}/app`
 
 var $btn_edit_element = document.querySelector('.btn_edit_element')
 var $btn_add_element_work_order = document.querySelector('#btn_add_element_work_order')
@@ -11,7 +12,7 @@ $btn_add_element_work_order.addEventListener('click', function (element){
 
 	$.ajax({
 		method: 'post',
-		url: `http://localhost:5000/plataforma/work-order/${work_order_id}/add-item/${type_service}`,
+		url: `${URL_MAIN}/plataforma/work-order/${work_order_id}/add-item/${type_service}`,
 		success: function (result) {
 			
 			console.log(result)
@@ -92,7 +93,7 @@ $ArticlesContainer.on('click', 'a.btn_edit_element', function (ev) {
 
   $.ajax({
   	method: 'post',
-  	url: `http://localhost:5000/plataforma/work-order/${work_order_id}/edit/${type_service}/${service_id}`,
+  	url: `${URL_MAIN}/plataforma/work-order/${work_order_id}/edit/${type_service}/${service_id}`,
   	success: function (result) {
   		console.log('Reusltado')
   		console.log(result)

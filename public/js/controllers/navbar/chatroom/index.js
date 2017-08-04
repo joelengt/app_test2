@@ -59,7 +59,7 @@ myApp.controller('chatRoom', ['$scope', '$http', 'Loader', 'userModel', function
 		Loader.create('.MessagesFriends__containner--items', 'ItemsRooms')
 		$http({
 			method:'GET',
-			url:'/dashboard/chat/list'
+			url: `${$scope.url.url}/dashboard/chat/list`
 		}).then(function(res){
 			Loader.delete('.MessagesFriends__containner--items', 'ItemsRooms')
 			console.log(res)
@@ -108,7 +108,7 @@ myApp.controller('chatRoom', ['$scope', '$http', 'Loader', 'userModel', function
 		Loader.create('.MessagesFriends__containner--items', 'ItemsRooms')
 		$http({
 			method: 'GET',
-			url: '/dashboard/chat/list-friends'
+			url: `${$scope.url.url}/dashboard/chat/list-friends`
 		}).then(function(res){
 			Loader.delete('.MessagesFriends__containner--items', 'ItemsRooms')
 			console.log(res)
@@ -143,7 +143,7 @@ myApp.controller('chatRoom', ['$scope', '$http', 'Loader', 'userModel', function
 		var idFriend = this.getAttribute('data-user-id')
 		$http({
 			method: 'GET',
-			url:'/dashboard/chat/list'
+			url: `${$scope.url.url}/dashboard/chat/list`
 		}).then(function(res){
 			Loader.delete('.MessagesFriends__containner', 'newFirends')
 			console.log(res)
@@ -178,7 +178,7 @@ myApp.controller('chatRoom', ['$scope', '$http', 'Loader', 'userModel', function
 		console.log(idFriend)
 		$http({
 			method: 'POST',
-			url:'/dashboard/chat/new-chat/'+idFriend
+			url: `${$scope.url.url}/dashboard/chat/new-chat/${idFriend}`
 		}).then(function(res){
 			console.log(res)
 			var room = res.data.chat_room
@@ -208,7 +208,7 @@ myApp.controller('chatRoom', ['$scope', '$http', 'Loader', 'userModel', function
 		Loader.create('.MessagesFriends__containner', 'LoaderUserRoom')
 		$http({
 			method: 'POST',
-			url: '/dashboard/chat/room/'+idRoom+'/'+idFriend
+			url: `${$scope.url.url}/dashboard/chat/room/${idRoom}/${idFriend}`
 		}).then(function(res){
 			var infoFriend = res.data.friend
 			var chat = res.data.chatContent.messages

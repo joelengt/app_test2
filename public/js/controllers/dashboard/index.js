@@ -5,7 +5,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 
 	$http({
 		method: 'POST',
-		url: '/dashboard/ordenes_trabajo/dynamic-filter/true/all/all'
+		url: `${$scope.url.url}/dashboard/ordenes_trabajo/dynamic-filter/true/all/all`
 	}).then(function(res){
 		Loader.delete('.OrderWork__left--list', 'listItemsDash')
 		Loader.delete('.OrderWork__right', 'firstMarkerMap')
@@ -198,7 +198,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 
 		$http({
 			method: 'GET',
-			url: 'dashboard/usuarios/users-campo/new'
+			url: `${$scope.url.url}/dashboard/usuarios/users-campo/new`
 		}).then(function(res){
 			console.log(res)
 			$scope.contratistas = res.data.contratistas
@@ -211,7 +211,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 			console.log(id)
 			$http({
 				method: 'POST',
-				url: '/dashboard/ordenes_trabajo/'+id+'/change-status/cancelado'
+				url: `${$scope.url.url}/dashboard/ordenes_trabajo/${id}/change-status/cancelado`
 			}).then(function(res){
 				console.log(res)
 				location.reload()
@@ -440,7 +440,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 			if (cancel !== null) {
 				$http({
 					method:'POST',
-					url: '/dashboard/ordenes_trabajo/'+cancel+'/change-status/cancelado'
+					url: `${$scope.url.url}/dashboard/ordenes_trabajo/${cancel}/change-status/cancelado`
 				}).then(function(res){
 					console.log(res)
 					location.reload()
@@ -450,7 +450,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 			} else if(viewReport !== null){
 				$http({
 					method: 'GET',
-					url: '/dashboard/notificaciones/find-by-work/'+ viewReport
+					url: `${$scope.url.url}/dashboard/notificaciones/find-by-work/${viewReport}`
 				}).then(function(res){
 					console.log(res)
 					var model = document.querySelector('.ModalReport')
@@ -501,7 +501,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 			} else if(deleteBox !== null){
 				$http({
 					method: 'POST',
-					url: '/dashboard/ordenes_trabajo/delete/'+deleteBox+'?_method=delete'
+					url: `${$scope.url.url}/dashboard/ordenes_trabajo/delete/${deleteBox}?_method=delete`
 				}).then(function(res){
 					console.log(res)
 					location.reload()
@@ -526,7 +526,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 
 			$http({
 				method: 'POST',
-				url: '/dashboard/ordenes_trabajo/'+codigo_order+'/change-status/reprogramado',
+				url: `${$scope.url.url}/dashboard/ordenes_trabajo/${codigo_order}/change-status/reprogramado`,
 				data: data
 			}).then(function(res){
 				console.log(res)
@@ -2326,7 +2326,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 					if (typeService !== 'NaN') {
 						$http({
 							method: 'POST',
-							url:'/dashboard/ordenes_trabajo/dynamic-filter/'+estado.val()+'/'+typeService+'/'+contratista.val()
+							url: `${$scope.url.url}/dashboard/ordenes_trabajo/dynamic-filter/${estado.val()}/${typeService}/${contratista.val()}`
 						}).then(function(res){
 							console.log(res)
 							Loader.delete('.OrderWork__left--list', 'ListOrderItems')
@@ -2362,7 +2362,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 
 						$http({
 							method: 'POST',
-							url:'/dashboard/ordenes_trabajo/dynamic-filter/'+estado.val()+'/'+typeService+'/'+contratista.val(),
+							url: `${$scope.url.url}/dashboard/ordenes_trabajo/dynamic-filter/${estado.val()}/${typeService}/${contratista.val()}`,
 							data:data
 						}).then(function(res){
 							console.log(res)
@@ -2407,7 +2407,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 				Loader.create('.OrderWork__right--mapCanvas', 'markersTrabajoPoste')
 				$http({
 					method: 'GET',
-					url: '/dashboard/ordenes_trabajo/'+order
+					url: `${$scope.url.url}/dashboard/ordenes_trabajo/${order}`
 				}).then(function(res){
 					Loader.delete('.InfoContainner', 'ordenTrabajoPoste')
 					Loader.delete('.OrderWork__right--mapCanvas', 'markersTrabajoPoste')
@@ -2717,7 +2717,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 						function cancelOrder(){
 							$http({
 								method: 'POST',
-								url: '/dashboard/ordenes_trabajo/'+item._id+'/change-status/cancelado'
+								url: `${$scope.url.url}/dashboard/ordenes_trabajo/${item._id}/change-status/cancelado`
 							}).then(function(res){
 								console.log(res)
 								location.reload()
@@ -2733,7 +2733,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 							console.log('XD')
 							$http({
 								method: 'POST',
-								url: '/dashboard/ordenes_trabajo/delete/'+item._id+'?_method=delete'
+								url: `${$scope.url.url}/dashboard/ordenes_trabajo/delete/${item._id}?_method=delete`
 							}).then(function(res){
 								console.log(res)
 								location.reload()
@@ -2747,7 +2747,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 							var element = item.elementos[i]
 							$http({
 								method:'POST',
-								url: '/dashboard/ordenes_trabajo/'+item._id+'/read/'+element.type+'/'+element._id
+								url: `${$scope.url.url}/dashboard/ordenes_trabajo/${item._id}/read/${element.type}/${element._id}`
 							}).then(function(res){
 								console.log(res)
 								console.log(item.estado)
@@ -2838,7 +2838,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 							Loader.create('.OrderWork__right--mapCanvas','ItemOrderTrabajoMap')
 							$http({
 								method: 'POST',
-								url: '/dashboard/ordenes_trabajo/'+item._id+'/read/poste/'+idElement
+								url: `${$scope.url.url}/dashboard/ordenes_trabajo/${item._id}/read/poste/${idElement}`
 							}).then(function(res){
 								console.log(res)
 								Loader.delete('.DateInfoElement','ItenOrderTrabajo')
@@ -3224,7 +3224,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 							Loader.create('.EditPoste', 'LoadInfoOrder')
 							$http({
 								method: 'GET',
-								url: '/dashboard/ordenes_trabajo/'+order
+								url: `${$scope.url.url}/dashboard/ordenes_trabajo/${order}`
 							}).then(function(res){
 								Loader.delete('.EditPoste', 'LoadInfoOrder')
 								var item = res.data.work_order
@@ -3430,7 +3430,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 							  // LISTA DE USUARIOS CONTRATISTAS
 								$http({
 									method: 'GET',
-									url:'/dashboard/usuarios/list/users-campo'
+									url: `${$scope.url.url}/dashboard/usuarios/list/users-campo`
 								}).then(function(res){
 									console.log('XD123456')
 									console.log(res)
@@ -3457,7 +3457,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 								// LISTA DE USUARIOS SUPERVISORES
 								$http({
 									method: 'GET',
-									url: '/dashboard/usuarios/list/officers'
+									url: `${$scope.url.url}/dashboard/usuarios/list/officers`
 								}).then(function(res){
 									var usersListSupervisor = res.data.usuarios
 									for (var i = 0; i < usersListSupervisor.length; i++) {
@@ -3534,7 +3534,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 										// SE OBTIENE DATOS LOS DATOS DEL SERVICIO BUSCADO
 										$http({
 											method: 'POST',
-											url: '/dashboard/ordenes_trabajo/poste',
+											url: `${$scope.url.url}/dashboard/ordenes_trabajo/poste`,
 											data: data,
 										}).then(function(res){
 											console.log(res)
@@ -3569,7 +3569,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 											// CREACION DE NUEVO POSTE
 											$http({
 												method: 'POST',
-												url: '/dashboard/ordenes_trabajo/'+item._id+'/add-item/poste'
+												url: `${$scope.url.url}/dashboard/ordenes_trabajo/${item._id}/add-item/poste`
 											}).then(function(res){
 												console.log(res)
 												
@@ -3593,7 +3593,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 												// EDICION DE POSTE NUEVO CREADO RECIENTEMENTE
 												$http({
 													method: 'POST',
-													url: '/dashboard/ordenes_trabajo/'+item._id+'/item/poste/'+res.data.service._id+'?_method=put',
+													url: `${$scope.url.url}/dashboard/ordenes_trabajo/${item._id}/item/poste/${res.data.service._id}?_method=put`,
 													data: data
 												}).then(function(res){
 													console.log(res)
@@ -3616,7 +3616,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 								function addElementOrder(){
 									$http({
 										method: 'POST',
-										url: '/dashboard/ordenes_trabajo/'+item._id+'/add-item/poste'
+										url: `${$scope.url.url}/dashboard/ordenes_trabajo/${item._id}/add-item/poste`
 									}).then(function(res){
 										console.log(res)
 										var box_Content = $('#contentItems')
@@ -3656,7 +3656,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 
 									$http({
 										method:'POST',
-										url: '/dashboard/ordenes_trabajo/'+item._id+'/read/'+element.type+'/'+element._id
+										url: `${$scope.url.url}/dashboard/ordenes_trabajo/${item._id}/read/${element.type}/${element._id}`
 									}).then(function(res){
 										console.log(res)
 
@@ -3733,7 +3733,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 									var id = this.getAttribute('data-id')
 									$http({
 										method: 'POST',
-										url: '/dashboard/ordenes_trabajo/'+item._id+'/delete/poste/'+id+'?_method=delete'
+										url: `${$scope.url.url}/dashboard/ordenes_trabajo/${item._id}/delete/poste/${id}?_method=delete`
 									}).then(function(res){
 										console.log(res)
 										$('[data-content="'+id+'"]').remove()
@@ -3748,7 +3748,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 									var idPoste = this.getAttribute('data-id')
 									$http({
 										method: 'POST',
-										url: '/dashboard/ordenes_trabajo/'+item._id+'/read/poste/'+idPoste
+										url: `${$scope.url.url}/dashboard/ordenes_trabajo/${item._id}/read/poste/${idPoste}`
 									}).then(function(res){
 										console.log(res)
 										var item = res.data.service
@@ -3976,7 +3976,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 
 											$http({
 												method: 'POST',
-												url: '/dashboard/ordenes_trabajo/'+res.data.work_order_id+'/item/poste/'+res.data.service._id+'?_method=put',
+												url: `${$scope.url.url}/dashboard/ordenes_trabajo/${res.data.work_order_id}/item/poste/${res.data.service._id}?_method=put`,
 												data: data
 											}).then(function(res){
 												console.log(res)
@@ -4064,7 +4064,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 
 									$http({
 										method: 'POST',
-										url:'/dashboard/ordenes_trabajo/'+order+'?_method=put',
+										url: `${$scope.url.url}/dashboard/ordenes_trabajo/${order}?_method=put`,
 										data: data
 									}).then(function(res){
 										console.log(res)
@@ -4385,7 +4385,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 						function cancelOrder(){
 							$http({
 								method: 'POST',
-								url: '/dashboard/ordenes_trabajo/'+item._id+'/change-status/cancelado'
+								url: `${$scope.url.url}/dashboard/ordenes_trabajo/${item._id}/change-status/cancelado`
 							}).then(function(res){
 								console.log(res)
 								location.reload()
@@ -4413,7 +4413,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 							console.log('XD')
 							$http({
 								method: 'POST',
-								url: '/dashboard/ordenes_trabajo/delete/'+item._id+'?_method=delete'
+								url: `${$scope.url.url}/dashboard/ordenes_trabajo/delete/${item._id}?_method=delete`
 							}).then(function(res){
 								console.log(res)
 								location.reload()
@@ -4427,7 +4427,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 							var element = item.elementos[i]
 							$http({
 								method:'POST',
-								url: '/dashboard/ordenes_trabajo/'+item._id+'/read/'+element.type+'/'+element._id
+								url: `${$scope.url.url}/dashboard/ordenes_trabajo/${item._id}/read/${element.type}/${element._id}`
 							}).then(function(res){
 								console.log(item.estado)
 
@@ -4521,7 +4521,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 							console.log(idElement)
 							$http({
 								method: 'POST',
-								url: '/dashboard/ordenes_trabajo/'+item._id+'/read/cliente/'+idElement
+								url: `${$scope.url.url}/dashboard/ordenes_trabajo/${item._id}/read/cliente/${idElement}`
 							}).then(function(res){
 								console.log(res)
 
@@ -4950,7 +4950,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 							Loader.create('.EditPoste', 'LoaderCliente')
 							$http({
 								method: 'GET',
-								url: '/dashboard/ordenes_trabajo/'+order
+								url: `${$scope.url.url}/dashboard/ordenes_trabajo/${order}`
 							}).then(function(res){
 								Loader.delete('.EditPoste', 'LoaderCliente')
 								console.log(res)
@@ -5135,7 +5135,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 								// USUARIOS CONTRATISTAS EN SELECT
 								$http({
 									method: 'GET',
-									url:'/dashboard/usuarios/list/users-campo'
+									url: `${$scope.url.url}/dashboard/usuarios/list/users-campo`
 								}).then(function(res){
 									console.log('XD123456')
 									console.log(res)
@@ -5161,7 +5161,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 								// USUARIOS SUPERVISORES EN SELECT
 								$http({
 									method: 'GET',
-									url: '/dashboard/usuarios/list/officers'
+									url: `${$scope.url.url}/dashboard/usuarios/list/officers`
 								}).then(function(res){
 									var usersListSupervisor = res.data.usuarios
 									for (var i = 0; i < usersListSupervisor.length; i++) {
@@ -5231,7 +5231,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 
 									$http({
 										method:'POST',
-										url: '/dashboard/ordenes_trabajo/'+item._id+'/read/'+element.type+'/'+element._id
+										url: `${$scope.url.url}/dashboard/ordenes_trabajo/${item._id}/read/${element.type}/${element._id}`
 									}).then(function(res){
 										console.log(res)
 										console.log(item.detalle_servicio)
@@ -5332,7 +5332,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 									console.log('XD')
 									$http({
 										method: 'POST',
-										url: '/dashboard/ordenes_trabajo/'+item._id+'/add-item/cliente'
+										url: `${$scope.url.url}/dashboard/ordenes_trabajo/${item._id}/add-item/cliente`
 									}).then(function(res){
 										console.log(res)
 										var item = res.data.service
@@ -5373,7 +5373,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 									var id = this.getAttribute('data-id')
 									$http({
 										method: 'POST',
-										url: '/dashboard/ordenes_trabajo/'+item._id+'/delete/cliente/'+id+'?_method=delete'
+										url: `${$scope.url.url}/dashboard/ordenes_trabajo/${item._id}/delete/cliente/${id}?_method=delete`
 									}).then(function(res){
 										console.log(res)
 										$('[data-content="'+id+'"]').remove()
@@ -5389,7 +5389,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 									console.log(idElement)
 									$http({
 										method: 'POST',
-										url: '/dashboard/ordenes_trabajo/'+item._id+'/read/cliente/'+idElement
+										url: `${$scope.url.url}/dashboard/ordenes_trabajo/${item._id}/read/cliente/${idElement}`
 									}).then(function(res){
 										console.log(res)
 										var elementData = res.data.service
@@ -5590,7 +5590,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 
 											$http({
 												method: 'POST',
-												url: '/dashboard/ordenes_trabajo/'+item._id+'/item/cliente/'+idElement+'?_method=put',
+												url: `${$scope.url.url}/dashboard/ordenes_trabajo/${item._id}/item/cliente/${idElement}?_method=put`,
 												data: data
 											}).then(function(res){
 												console.log(res, idElement)
@@ -5751,7 +5751,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 									console.log(idElement)
 									$http({
 										method: 'POST',
-										url: '/dashboard/ordenes_trabajo/'+item._id+'/read/cliente/'+idElement
+										url: `${$scope.url.url}/dashboard/ordenes_trabajo/${item._id}/read/cliente/${idElement}`
 									}).then(function(res){
 										console.log(res)
 										var elementData = res.data.service
@@ -6018,7 +6018,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 
 											$http({
 												method: 'POST',
-												url: '/dashboard/ordenes_trabajo/'+item._id+'/item/cliente/'+idElement+'?_method=put',
+												url: `${$scope.url.url}/dashboard/ordenes_trabajo/${item._id}/item/cliente/${idElement}?_method=put`,
 												data: data
 											}).then(function(res){
 												console.log(res)
@@ -6052,7 +6052,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 										// SE OBTIENE DATOS LOS DATOS DEL SERVICIO BUSCADO
 										$http({
 											method: 'POST',
-											url: '/dashboard/ordenes_trabajo/cliente',
+											url: `${$scope.url.url}/dashboard/ordenes_trabajo/cliente`,
 											data: data,
 										}).then(function(res){
 											console.log(res)
@@ -6063,7 +6063,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 												// CREACION DE NUEVO CLIENTE
 												$http({
 													method: 'POST',
-													url: '/dashboard/ordenes_trabajo/'+item._id+'/add-item/cliente'
+													url: `${$scope.url.url}/dashboard/ordenes_trabajo/${item._id}/add-item/cliente`
 												}).then(function(res){
 													console.log(res)
 
@@ -6098,7 +6098,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 													// EDICION DE CLIENTE NUEVO CREADO RECIENTEMENTE
 													$http({
 														method: 'POST',
-														url: '/dashboard/ordenes_trabajo/'+item._id+'/item/cliente/'+res.data.service._id+'?_method=put',
+														url: `${$scope.url.url}/dashboard/ordenes_trabajo/${item._id}/item/cliente/${res.data.service._id}?_method=put`,
 														data: data
 													}).then(function(res){
 														console.log(res)
@@ -6207,7 +6207,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 
 									$http({
 										method: 'POST',
-										url:'/dashboard/ordenes_trabajo/'+order+'?_method=put',
+										url: `${$scope.url.url}/dashboard/ordenes_trabajo/${order}?_method=put`,
 										data: data
 									}).then(function(res){
 										console.log(res)
@@ -6541,7 +6541,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 
 				$http({
 					method: 'GET',
-					url:'/dashboard/usuarios/list/users-campo'
+					url: `${$scope.url.url}/dashboard/usuarios/list/users-campo`
 				}).then(function(res){
 					console.log('XD123456')
 					console.log(res)
@@ -6559,7 +6559,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 
 				$http({
 					method: 'GET',
-					url: '/dashboard/usuarios/list/officers'
+					url: `${$scope.url.url}/dashboard/usuarios/list/officers`
 				}).then(function(res){
 					var usersListSupervisor = res.data.usuarios
 					for (var i = 0; i < usersListSupervisor.length; i++) {
@@ -6619,7 +6619,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 
 					$http({
 						method: 'POST',
-						url: '/dashboard/ordenes_trabajo/create',
+						url: `${$scope.url.url}/dashboard/ordenes_trabajo/create`,
 						data: data
 					}).then(function(res){
 						console.log(res)
@@ -7276,7 +7276,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 
 						$http({
 							method: 'POST',
-							url: '/dashboard/ordenes_trabajo/'+idNuevo+'/item/poste/'+idElement+'?_method=put',
+							url: `${$scope.url.url}/dashboard/ordenes_trabajo/${idNuevo}/item/poste/${idElement}?_method=put`,
 							data: data
 						}).then(function(res){
 							console.log(res)
@@ -7301,7 +7301,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 					if (codigo_poste.val() !== '') {
 						$http({
 							method: 'GET',
-							url:'/dashboard/ordenes_trabajo/'+idNuevo,
+							url: `${$scope.url.url}/dashboard/ordenes_trabajo/${idNuevo}`,
 						}).then(function(res){
 							console.log(res)
 							var num_elements = res.data.work_order.elementos.length
@@ -7318,7 +7318,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 								// SE OBTIENE DATOS LOS DATOS DEL SERVICIO BUSCADO
 								$http({
 									method: 'POST',
-									url: '/dashboard/ordenes_trabajo/poste',
+									url: `${$scope.url.url}/dashboard/ordenes_trabajo/poste`,
 									data: data,
 								}).then(function(res){
 									console.log(res)
@@ -7345,7 +7345,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 										// EDICION DE POSTE NUEVO CREADO RECIENTEMENTE
 										$http({
 											method: 'POST',
-											url: '/dashboard/ordenes_trabajo/'+idNuevo+'/item/poste/'+idFirstElement+'?_method=put',
+											url: `${$scope.url.url}/dashboard/ordenes_trabajo/${idNuevo}/item/poste/${idFirstElement}?_method=put`,
 											data: data
 										}).then(function(res){
 											console.log(res)
@@ -7387,7 +7387,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 								// SE OBTIENE DATOS LOS DATOS DEL SERVICIO BUSCADO
 								$http({
 									method: 'POST',
-									url: '/dashboard/ordenes_trabajo/poste',
+									url: `${$scope.url.url}/dashboard/ordenes_trabajo/poste`,
 									data: data,
 								}).then(function(res){
 									console.log(res)
@@ -7398,7 +7398,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 										// CREACION DE NUEVO POSTE
 										$http({
 											method: 'POST',
-											url: '/dashboard/ordenes_trabajo/'+idNuevo+'/add-item/poste'
+											url: `${$scope.url.url}/dashboard/ordenes_trabajo/${idNuevo}/add-item/poste`
 										}).then(function(res){
 											console.log(res)
 											
@@ -7422,7 +7422,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 											// EDICION DE POSTE NUEVO CREADO RECIENTEMENTE
 											$http({
 												method: 'POST',
-												url: '/dashboard/ordenes_trabajo/'+idNuevo+'/item/poste/'+res.data.service._id+'?_method=put',
+												url: `${$scope.url.url}/dashboard/ordenes_trabajo/${idNuevo}/item/poste/${res.data.service._id}?_method=put`,
 												data: data
 											}).then(function(res){
 												console.log(res)
@@ -7527,7 +7527,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 					var id = this.getAttribute('data-id')
 					$http({
 						method: 'POST',
-						url: '/dashboard/ordenes_trabajo/'+idNuevo+'/delete/poste/'+id+'?_method=delete'
+						url: `${$scope.url.url}/dashboard/ordenes_trabajo/${idNuevo}/delete/poste/${id}?_method=delete`
 					}).then(function(res){
 						console.log(res)
 						$('[data-content="'+id+'"]').remove()
@@ -7541,7 +7541,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 					console.log('XD' + 'addNewElementEdited')
 					$http({
 						method: 'POST',
-						url: '/dashboard/ordenes_trabajo/'+idNuevo+'/add-item/poste'
+						url: `${$scope.url.url}/dashboard/ordenes_trabajo/${idNuevo}/add-item/poste`
 					}).then(function(res){
 						console.log(res)
 						var item = res.data.service
@@ -7611,7 +7611,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 
 					$http({
 						method: 'POST',
-						url: '/dashboard/ordenes_trabajo/'+idNuevo+'?_method=put',
+						url: `${$scope.url.url}/dashboard/ordenes_trabajo/${idNuevo}?_method=put`,
 						data: data
 					}).then(function(res){
 						Loader.delete('.EditPoste__containner--body', 'CreacionOrder')
@@ -7817,7 +7817,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 						console.log(idNuevo)
 						$http({
 							method:'POST',
-							url: '/dashboard/ordenes_trabajo/delete/'+idNuevo+'?_method=delete'
+							url: `${$scope.url.url}/dashboard/ordenes_trabajo/delete/${idNuevo}?_method=delete`
 						}).then(function(res){
 							console.log(res)
 						}, function(err){
@@ -7995,7 +7995,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 				// LISTA DE CONTRATISTAS
 				$http({
 					method: 'GET',
-					url:'/dashboard/usuarios/list/users-campo'
+					url: `${$scope.url.url}/dashboard/usuarios/list/users-campo`
 				}).then(function(res){
 					console.log(res)
 					var usersListContratista = res.data.usuarios
@@ -8013,7 +8013,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 				// LISTA DE SUPERVISORES
 				$http({
 					method: 'GET',
-					url: '/dashboard/usuarios/list/officers'
+					url: `${$scope.url.url}/dashboard/usuarios/list/officers`
 				}).then(function(res){
 					console.log(res)
 					var usersListSupervisor = res.data.usuarios
@@ -8074,7 +8074,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 
 					$http({
 						method: 'POST',
-						url: '/dashboard/ordenes_trabajo/create',
+						url: `${$scope.url.url}/dashboard/ordenes_trabajo/create`,
 						data: data
 					}).then(function(res){
 						console.log(res)
@@ -8205,10 +8205,10 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 				function deleteCliente(){
 					console.log(this.getAttribute('data-id'))
 					var id = this.getAttribute('data-id')
-					console.log('/dashboard/ordenes_trabajo/'+idNuevo+'/delete/cliente/'+id+'?_method=delete')
+					
 					$http({
 						method: 'POST',
-						url: '/dashboard/ordenes_trabajo/'+idNuevo+'/delete/cliente/'+id+'?_method=delete'
+						url: `${$scope.url.url}/dashboard/ordenes_trabajo/${idNuevo}/delete/cliente/${id}?_method=delete`
 					}).then(function(res){
 						console.log(res)
 						$('[data-content="'+id+'"]').remove()
@@ -8455,7 +8455,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 						console.log(idNuevo)
 						$http({
 							method: 'GET',
-							url:'/dashboard/ordenes_trabajo/'+idNuevo,
+							url: `${$scope.url.url}/dashboard/ordenes_trabajo/${idNuevo}`
 						}).then(function(res){
 							console.log(res)
 							var num_elements = res.data.work_order.elementos.length
@@ -8473,7 +8473,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 								// SE OBTIENE DATOS LOS DATOS DEL SERVICIO BUSCADO
 								$http({
 									method: 'POST',
-									url: '/dashboard/ordenes_trabajo/cliente',
+									url: `${$scope.url.url}/dashboard/ordenes_trabajo/cliente`,
 									data: data,
 								}).then(function(res){
 									console.log(res)
@@ -8511,7 +8511,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 										// EDICION DE POSTE NUEVO CREADO RECIENTEMENTE
 										$http({
 											method: 'POST',
-											url: '/dashboard/ordenes_trabajo/'+idNuevo+'/item/cliente/'+idFirstElement+'?_method=put',
+											url: `${$scope.url.url}/dashboard/ordenes_trabajo/${idNuevo}/item/cliente/${idFirstElement}?_method=put`,
 											data: data
 										}).then(function(res){
 											console.log(res)
@@ -8561,7 +8561,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 								// SE OBTIENE DATOS LOS DATOS DEL SERVICIO BUSCADO
 								$http({
 									method: 'POST',
-									url: '/dashboard/ordenes_trabajo/cliente',
+									url: `${$scope.url.url}/dashboard/ordenes_trabajo/cliente`,
 									data: data,
 								}).then(function(res){
 									console.log(res)
@@ -8572,7 +8572,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 										// CREACION DE NUEVO CLIENTE
 										$http({
 											method: 'POST',
-											url: '/dashboard/ordenes_trabajo/'+idNuevo+'/add-item/cliente'
+											url: `${$scope.url.url}/dashboard/ordenes_trabajo/${idNuevo}/add-item/cliente`
 										}).then(function(res){
 											console.log(res)
 
@@ -8607,7 +8607,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 											// EDICION DE CLIENTE NUEVO CREADO RECIENTEMENTE
 											$http({
 												method: 'POST',
-												url: '/dashboard/ordenes_trabajo/'+idNuevo+'/item/cliente/'+res.data.service._id+'?_method=put',
+												url: `${$scope.url.url}/dashboard/ordenes_trabajo/${idNuevo}/item/cliente/${res.data.service._id}?_method=put`,
 												data: data
 											}).then(function(res){
 												console.log(res)
@@ -8983,7 +8983,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 
 						$http({
 							method: 'POST',
-							url: '/dashboard/ordenes_trabajo/'+idNuevo+'/item/cliente/'+itemEditable+'?_method=put',
+							url: `${$scope.url.url}/dashboard/ordenes_trabajo/${idNuevo}/item/cliente/${itemEditable}?_method=put`,
 							data: data
 						}).then(function(res){
 							console.log(res)
@@ -9262,7 +9262,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 
 						$http({
 							method: 'POST',
-							url: '/dashboard/ordenes_trabajo/'+idNuevo+'/item/cliente/'+idElement+'?_method=put',
+							url: `${$scope.url.url}/dashboard/ordenes_trabajo/${idNuevo}/item/cliente/${idElement}?_method=put`,
 							data: data
 						}).then(function(res){
 							console.log(res)
@@ -9287,7 +9287,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 					console.log('XD')
 					$http({
 						method: 'POST',
-						url: '/dashboard/ordenes_trabajo/'+idNuevo+'/add-item/cliente'
+						url: `${$scope.url.url}/dashboard/ordenes_trabajo/${idNuevo}/add-item/cliente`
 					}).then(function(res){
 						console.log(res)
 						var item = res.data.service
@@ -9437,7 +9437,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 
 					$http({
 						method: 'POST',
-						url:'/dashboard/ordenes_trabajo/'+idNuevo+'?_method=put',
+						url: `${$scope.url.url}/dashboard/ordenes_trabajo/${idNuevo}?_method=put`,
 						data: data
 					}).then(function(res){
 						console.log(res)
@@ -9458,7 +9458,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 						console.log(idNuevo)
 						$http({
 							method:'POST',
-							url: '/dashboard/ordenes_trabajo/delete/'+idNuevo+'?_method=delete'
+							url: `${$scope.url.url}/dashboard/ordenes_trabajo/delete/${idNuevo}?_method=delete`
 						}).then(function(res){
 							console.log(res)
 						}, function(err){
@@ -9482,7 +9482,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 			// LISTA DE PAISES
 			$http({
 				method: 'GET',
-				url: '/dashboard/street-data-map/pais/list'
+				url: `${$scope.url.url}/dashboard/street-data-map/pais/list`
 			}).then(function(res){
 				console.log(res)
 				var countries = res.data.result
@@ -9501,7 +9501,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 				var country_id = this.value
 				$http({
 					method: 'GET',
-					url: '/dashboard/street-data-map/region/'+ country_id
+					url: `${$scope.url.url}/dashboard/street-data-map/region/${country_id}`
 				}).then(function(res){
 					console.log(res)
 					var regiones = res.data.result
@@ -9522,7 +9522,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 
 				$http({
 					method: 'GET',
-					url: '/dashboard/street-data-map/provincia/'+ region_id
+					url: `${$scope.url.url}/dashboard/street-data-map/provincia/${region_id}`
 				}).then(function(res){
 					console.log(res)
 					var provincias = res.data.result
@@ -9543,7 +9543,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 
 				$http({
 					method: 'GET',
-					url: '/dashboard/street-data-map/distrito/'+ province_id
+					url: `${$scope.url.url}/dashboard/street-data-map/distrito/${province_id}`
 				}).then(function(res){
 					console.log(res)
 					var district = res.data.result
@@ -9561,7 +9561,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 			// LISTA DE ABREVIATURAS DE TIPO DE VIA
 			$http({
 				method: 'GET',
-				url: '/dashboard/street-data-map/street-by-type/list'
+				url: `${$scope.url.url}/dashboard/street-data-map/street-by-type/list`
 			}).then(function(res){
 				console.log(res)
 				var typeVia = res.data.result
@@ -9584,7 +9584,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 
 				$http({
 					method: 'GET',
-					url: '/dashboard/street-data-map/street/'+district_id.val()+'/street-by-type/'+typeVia_id
+					url: `${$scope.url.url}/dashboard/street-data-map/street/${district_id.val()}/street-by-type/${typeVia_id}`
 				}).then(function(res){
 					if (res.data.status === 'ok') {
 						console.log(res)
@@ -9610,7 +9610,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 
 			$http({
 				method: 'GET',
-				url :'/dashboard/street-data-map/get/urbanizacion/list'
+				url: `${$scope.url.url}/dashboard/street-data-map/get/urbanizacion/list`
 			}).then(function(res){
 				console.log(res)
 				var urbanizaciones = res.data.result
@@ -9654,7 +9654,7 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 
 					$http({
 						method: 'POST',
-						url: '/dashboard/street-data-map/get/urbanizacion/add',
+						url: `${$scope.url.url}/dashboard/street-data-map/get/urbanizacion/add`,
 						data: data
 					}).then(function(res){
 						$('#newUrbanization').remove()

@@ -1,3 +1,5 @@
+let URL_MAIN = `${window.location.protocol}//${window.location.host}/app`
+
 var $btn_contratista_open = document.querySelector('#btn_contratista_open')
 var $btn_contratista_add = document.querySelector('#btn_contratista_add')
 var $txt_contratista_add = document.querySelector('#txt_contratista_add')
@@ -13,7 +15,7 @@ $btn_contratista_add.addEventListener('click', SendNewContratista)
 function SendNewContratista (ev) {
 	// Enviar Dat
 	$.ajax({	
-		url: '/dashboard/usuarios/contratista-name/add',
+		url: `${URL_MAIN}/dashboard/usuarios/contratista-name/add`,
 		method: 'post',
 		data: {
 			contratista: $txt_contratista_add.value

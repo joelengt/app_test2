@@ -12,7 +12,7 @@ myApp.controller('forgetPassword', ['$scope', '$http', 'Loader', function($scope
 			Loader.create('.ErrorLogin', 'Login')
 			$http({
 				method:'POST',
-				url:'/get-my-access/send_email/send',
+				url: `${$scope.url.url}/get-my-access/send_email/send`,
 				data: data
 			}).then(function(res){
 				console.log(res)

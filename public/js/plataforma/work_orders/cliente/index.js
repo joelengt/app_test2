@@ -1,3 +1,5 @@
+let URL_MAIN = `${window.location.protocol}//${window.location.host}/app`
+
 var $btn_buscar_cliente = document.querySelector('#btn_buscar_cliente')
 
 var type_service = 'cliente'
@@ -36,7 +38,7 @@ $btn_buscar_cliente.addEventListener('click', function () {
 	console.log(code_service)
 	$.ajax({
 		method: 'post',
-		url: `http://localhost:5000/plataforma/work-order/${type_service}`,
+		url: `${URL_MAIN}/plataforma/work-order/${type_service}`,
 		data: {
 			code_service: code_service
 		},

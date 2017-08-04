@@ -1,3 +1,4 @@
+let URL_MAIN = `${window.location.protocol}//${window.location.host}/app`
 
 var $btn_see_detalles = document.querySelector('#btn_see_detalles')
 
@@ -6,7 +7,7 @@ console.log('HOlaaaa')
 addEventListener('load', function () {
   $.ajax({
     method: 'get',
-    url: 'http://localhost:5000/plataforma/work-order/list',
+    url: `${URL_MAIN}/plataforma/work-order/list`,
     success: function (result) {
 
       var work_orders = result.work_orders
@@ -118,7 +119,7 @@ $ArticlesContainer.on('click', 'button.btn_article_detalles', function (ev) {
 
     $.ajax({
         type: 'GET',
-        url: `http://localhost:5000/plataforma/work-order/${id}`,
+        url: `${URL_MAIN}/plataforma/work-order/${id}`,
         success: function (result) {
             // Mostrando mapa de ubicación
             console.log(result.work_order)

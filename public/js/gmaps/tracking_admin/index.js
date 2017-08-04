@@ -1,10 +1,11 @@
+let URL_MAIN = `${window.location.protocol}//${window.location.host}/app`
   
 // console.log('HOlaaaajjjjjj')
 
 // addEventListener('load', function () {
 //   $.ajax({
 //     method: 'get',
-//     url: 'http://localhost:5000/dashboard/ordenes_trabajo/works_ordeners/list',
+//     url: '${URL_MAIN}/dashboard/ordenes_trabajo/works_ordeners/list',
 //     success: function (result) {
 
 //       var work_orders = result.work_orders
@@ -85,7 +86,7 @@
 
 //       $.ajax({
 //         method: 'get',
-//         url: 'http://localhost:5000/dashboard/usuarios/tracking/' + user_id + '/draw',
+//         url: '${URL_MAIN}/dashboard/usuarios/tracking/' + user_id + '/draw',
 //         success: function (result) {
             
 //             // path = [[-12.044012922866312, -77.02470665341184], 
@@ -101,14 +102,13 @@
 
 //              var path = []
 
-<<<<<<< HEAD
-              $('.ArticlesContainer').html(template)
+//               $('.ArticlesContainer').html(template)
 
-        }
-    })
+//         }
+//     })
 
 
-})
+// })
 
 
 $ArticlesContainer.on('click','button.btn_article_street-view', function (ev) {
@@ -119,7 +119,7 @@ $ArticlesContainer.on('click','button.btn_article_street-view', function (ev) {
   console.log(id)
   $.ajax({
      type: 'GET',
-     url: `http://localhost:5000/dashboard/ordenes_trabajo/${id}`,
+     url: `${URL_MAIN}/dashboard/ordenes_trabajo/${id}`,
      success: function (result) {
          // Mostrando mapa de ubicación
          console.log(result.work_order)
@@ -149,7 +149,7 @@ $ArticlesContainer.on('click','button.btn_article_service_details', function (ev
     // Consultando la orden de trabajopor id de item
     $.ajax({
         type: 'GET',
-        url:`http://localhost:5000/dashboard/ordenes_trabajo/${id}`,
+        url:`${URL_MAIN}/dashboard/ordenes_trabajo/${id}`,
         success: function (result) {
           console.log(result.work_order)
           var item = result.work_order
@@ -175,7 +175,7 @@ $ArticlesContainer.on('click','button.btn_article_service_details', function (ev
           // Buscando detalles del servicio por esta orden de trabajo
           $.ajax({
             type: 'POST',
-            url: `http://localhost:5000/dashboard/ordenes_trabajo/buscar/${type_service}`,
+            url: `${URL_MAIN}/dashboard/ordenes_trabajo/buscar/${type_service}`,
             data: {
               code_work_order: item.codigo_orden
             },
@@ -259,10 +259,10 @@ $ArticlesContainer.on('click','button.btn_article_service_details', function (ev
 
                 } else {
                   template_serviec_info = `<article>El tipo de servicio solicitado, no coincide con la data enviada</article>`
-=======
+
 //             for(var g = 0; g <= result.tracking_list.track_info.length - 1; g++) {
 //                 var el_coord =  result.tracking_list.track_info[g]
->>>>>>> ff5e8aebf259362ef297cae89c6394f77d888d2a
+
                 
 //                 var arr_item = [Number(el_coord.coordX), Number(el_coord.coordY)]
 

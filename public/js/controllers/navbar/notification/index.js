@@ -26,7 +26,7 @@ myApp.controller('notificationController', ['$scope', 'userModel', '$http', 'Loa
 	function count_Notificaiones(){
 		$http({
 			method: 'GET',
-			url: '/dashboard/notificaciones/get/no_read'
+			url: `${$scope.url.url}/dashboard/notificaciones/get/no_read`
 		}).then(function(res){
 			console.log(res)
 			$('.CounterNotifications').html(res.data.notification_no_read_count)
@@ -55,7 +55,7 @@ myApp.controller('notificationController', ['$scope', 'userModel', '$http', 'Loa
 			// } else{
 				$http({
 					method: 'GET',
-					url: '/dashboard/notificaciones'
+					url: `${$scope.url.url}/dashboard/notificaciones`
 				}).then(function(res){
 					console.log(res)
 					Loader.delete('.Notifications', 'listNotification')
@@ -92,7 +92,7 @@ myApp.controller('notificationController', ['$scope', 'userModel', '$http', 'Loa
 				console.log('jsjsjs')
 				$http({
 					method: 'GET',
-					url: '/dashboard/notificaciones/more'
+					url: `${$scope.url.url}/dashboard/notificaciones/more`
 				}).then(function(res){
 					console.log(res)
 
@@ -144,7 +144,7 @@ myApp.controller('notificationController', ['$scope', 'userModel', '$http', 'Loa
 					
 					$http({
 						method: 'POST',
-						url: '/dashboard/notificaciones/'+content._id+'/change-to-read?_method=put'
+						url: `${$scope.url.url}/dashboard/notificaciones/${content._id}/change-to-read?_method=put`
 					}).then(function(res){
 						console.log(res)
 					}, function(err){
@@ -243,7 +243,7 @@ myApp.controller('notificationController', ['$scope', 'userModel', '$http', 'Loa
 
 				$http({
 					method: 'POST',
-					url: '/dashboard/ordenes_trabajo/'+codigo_order+'/change-status/reprogramado',
+					url: `${$scope.url.url}/dashboard/ordenes_trabajo/${codigo_order}/change-status/reprogramado`,
 					data: data
 				}).then(function(res){
 					console.log(res)
@@ -284,7 +284,7 @@ myApp.controller('notificationController', ['$scope', 'userModel', '$http', 'Loa
 					
 					$http({
 						method: 'POST',
-						url: '/dashboard/notificaciones/'+idNotification+'/change-to-read?_method=put'
+						url: `${$scope.url.url}/dashboard/notificaciones/${idNotification}/change-to-read?_method=put`
 					}).then(function(res){
 						console.log(res)
 						$location.url('/dashboard/order/'+idOrder)

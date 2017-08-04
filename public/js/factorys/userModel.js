@@ -1,3 +1,5 @@
+let URL_MAIN = `${window.location.protocol}//${window.location.host}/app`
+
 myApp.factory('userModel', ['$http', '$cookies', function($http, $cookies){
 	var userModel = {}
 
@@ -7,7 +9,7 @@ myApp.factory('userModel', ['$http', '$cookies', function($http, $cookies){
 			headers:{
 				'Content-Type':'application/json'
 			},
-			url:'/auth/dashboard',
+			url: `${URL_MAIN}/auth/dashboard`,
 			method: 'POST',
 			data:{
 				username: loginData.username,
@@ -33,7 +35,7 @@ myApp.factory('userModel', ['$http', '$cookies', function($http, $cookies){
 	userModel.doUserLogout = function(){
 		$cookies.remove('auth')
 		$http({
-			url:'/logout',
+			url: `${URL_MAIN}/logout`,
 			method: 'GET'
 		}).then(function(res){
 			console.log(res)

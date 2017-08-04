@@ -1,3 +1,5 @@
+let URL_MAIN = `${window.location.protocol}//${window.location.host}/app`
+
 var $btn_empresa_open = document.querySelector('#btn_empresa_open')
 var $btn_empresa_add = document.querySelector('#btn_empresa_add')
 var $txt_empresa_add = document.querySelector('#txt_empresa_add')
@@ -13,7 +15,7 @@ $btn_empresa_add.addEventListener('click', SendNewEmpresa)
 function SendNewEmpresa (ev) {
 	// Enviar Dat
 	$.ajax({	
-		url: '/dashboard/usuarios/empresa-cliente-name/add',
+		url: `${URL_MAIN}/dashboard/usuarios/empresa-cliente-name/add`,
 		method: 'post',
 		data: {
 			empresa: $txt_empresa_add.value
