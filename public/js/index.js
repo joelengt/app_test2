@@ -5,7 +5,7 @@
 * Description
 */
 var myApp = angular.module('Astrum', ['ngRoute', 'ngCookies'])
-var URL_MAIN = `${window.location.protocol}//${window.location.host}:5002`
+var URL_MAIN = `${window.location.protocol}//${window.location.hostname}:5002`
 
 myApp.constant('url', {
 	url: `${window.location.protocol}//${window.location.host}`,
