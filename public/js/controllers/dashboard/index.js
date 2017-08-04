@@ -3,6 +3,8 @@ myApp.controller('dashboardController', ['$scope', '$http', 'url', 'Loader', fun
 	Loader.create('.OrderWork__left--list', 'listItemsDash')
 	Loader.create('.OrderWork__right', 'firstMarkerMap')
 
+	console.log('URL', $scope.url.url)
+
 	$http({
 		method: 'POST',
 		url: `${$scope.url.url}/dashboard/ordenes_trabajo/dynamic-filter/true/all/all`
